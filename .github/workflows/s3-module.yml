@@ -26,11 +26,6 @@ jobs:
       with:
         terraform_version: ${{ env.TF_VERSION }}
 
-    - name: Set up Python ${{ env.PYTHON_VERSION }}
-      uses: actions/setup-python@v2
-      with:
-        python-version: ${{ env.PYTHON_VERSION }}
-
     - name: Terraform Version
       id: version
       run: terraform version
@@ -42,14 +37,6 @@ jobs:
     - name: Terraform Init
       id: init
       run: terraform init
-
-    - name: Install Checkov
-      id: checkov-Install
-      run: pip3 install checkov
-
-    - name: Run Checkov
-      id: checkov-run
-      run: checkov -d . --skip-check CKV_AWS_18
 
   security:
     name: security
