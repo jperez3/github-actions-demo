@@ -2,8 +2,6 @@ name: s3-module
 
 on:
   pull_request:
-    branches:
-      - master
     paths:
     - 'terraform/modules/s3/**'
 
