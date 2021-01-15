@@ -12,10 +12,10 @@ resource "aws_s3_bucket" "ec2" {
     }
   }
 
-  versioning {
-    enabled    = true
-    mfa_delete = true
-  }
+  # versioning {
+  #   enabled    = true
+  #   mfa_delete = true
+  # }
 
 
 
