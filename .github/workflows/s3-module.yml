@@ -1,0 +1,74 @@
+name: s3-module
+
+on:
+  pull_request:
+    branches:
+      - master
+    paths:
+    - 'terraform/modules/s3/**'
+
+env:
+  TF_VERSION: 0.14.4
+  PYTHON_VERSION: 3.9
+
+defaults:
+  run:
+    working-directory: terraform/modules/s3
+
+jobs:
+  validate:
+    name: validate
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v1
+      with:
+        terraform_version: ${{ env.TF_VERSION }}
+
+    - name: Set up Python ${{ env.PYTHON_VERSION }}
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{ env.PYTHON_VERSION }}
+
+    - name: Terraform Version
+      id: version
+      run: terraform version
+
+    - name: Terraform Format
+      id: fmt
+      run: terraform fmt -check
+
+    - name: Terraform Init
+      id: init
+      run: terraform init
+
+    - name: Install Checkov
+      id: checkov-Install
+      run: pip3 install checkov
+
+    - name: Run Checkov
+      id: checkov-run
+      run: checkov -d . --skip-check CKV_AWS_18
+
+  security:
+    name: security
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Set up Python ${{ env.PYTHON_VERSION }}
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{ env.PYTHON_VERSION }}
+
+    - name: Install Checkov
+      id: checkov-Install
+      run: pip3 install checkov
+
+    - name: Run Checkov
+      id: checkov-run
+      run: checkov -d . --skip-check CKV_AWS_18
