@@ -1,0 +1,23 @@
+on:
+  workflow_dispatch:
+    inputs:
+      image_tag:
+        description: "Container Tag"
+        required: true
+
+jobs:
+  docker-latest:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Git Checkout
+        uses: actions/checkout@v2
+      - name: Docker Version
+        run: docker version
+
+  docker-1804:
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Git Checkout
+        uses: actions/checkout@v2
+      - name: Docker Version
+        run: docker version
