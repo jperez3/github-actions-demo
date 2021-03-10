@@ -5,7 +5,7 @@ name: react-pull-request
 on:
   push:
   # pull_request:
-    branches: [ main ]
+    # branches: [ main ]
     paths:
     - 'react/tacos/**'
 
