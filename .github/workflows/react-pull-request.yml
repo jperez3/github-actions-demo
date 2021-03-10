@@ -1,9 +1,8 @@
 name: react-pull-request
 
-#description: test for s3 module
-
 on:
   pull_request:
+    branches: [ main ]
     paths:
     - 'react/tacos/**'
 
