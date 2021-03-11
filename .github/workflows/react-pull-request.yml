@@ -3,7 +3,7 @@ name: react-pull-request
 
 on:
   push:
-  pull_request:
+  # pull_request:
     # branches: [ main ]
     paths:
     - 'react/tacos/**'
@@ -33,5 +33,8 @@ jobs:
     - name: Install Dependencies
       run: yarn install
 
-    - name: Yarn Test
+    - name: Linting
+      run: yarn lint  
+
+    - name: Testing
       run: yarn test  
