@@ -13,8 +13,8 @@ defaults:
     working-directory: react/tacos
 
 jobs:
-  react-test:
-    name: react-test
+  react-release:
+    name: react-release
     runs-on: ubuntu-20.04
     steps:
     - name: Checkout
@@ -25,7 +25,9 @@ jobs:
         node-version: '15'
 
     - name: Install Dependencies
-      run: yarn install
+      run: |
+      yarn install
+      yarn global add surge
 
     # - name: Update Tacos version
     #   run: sed -i 's/Version:.*/Version v1.1.1/g' src/app.js
@@ -38,9 +40,6 @@ jobs:
 
     - name: Testing Tacos
       run: yarn test
-
-    - name: Install Surge Deployment Tool
-      run: yarn global add surge
 
     - name: Deploy Tacos to Surge.sh
       run: surge ./build tacos.surge.sh --token ${{secrets.SURGE_TOKEN}}
