@@ -1,39 +1,33 @@
 # github-actions-demo
 
 
-### Checkov
+### What are Github Actions?
 
-* [Checkov](https://github.com/bridgecrewio/checkov) is a static security analyzer for Infrastructure-as-Code
+* little automation robots
 
-* Running checkov: `checkov -d terraform/modules/s3`
-* Running checkov with exclusion: `checkov -d terraform/modules/s3 --skip-check CKV_AWS_18`
+### Why you should care about Github Actions
 
-
-
-### Act
-
-* [Act](https://github.com/nektos/act) is a tool that allows you to run github actions locally
-
-* The act container is HEAVY: `docker image ls`
-
-```
-REPOSITORY                       TAG          IMAGE ID       CREATED         SIZE
-nektos/act-environments-ubuntu   18.04-full   d74dd75edae2   11 months ago   35GB
-```
-
-* Running act: `act pull_request -P ubuntu-latest=nektos/act-environments-ubuntu:18.04-full`
-
-* `Act` pros:
-  * no checking in code and waiting for the workers/runners
+* They automate boring stuff
+* They can help tighten the feedback loop to expose problems earlier in the development lifecycle
+* The learning curve much lower compared to tools like Jenkins
 
 
-* `Act` cons:
-  * flags seem to be hit or miss (eg. I wasn't able to get it to differentiate specific jobs to run)
-  * Huge container image is basically required
+### Examples of Github Actions
+
+* Automatically test code when a pull request has been created
+* Deploys an application when a release is published
+* Building containers and uploading them to a repository
 
 
-### Docker build example
+### Github Actions Cons
 
-* Check out `.github/workflows/docker-example.yml`
-* Go to `docker-example` in [Github Actions](https://github.com/jperez3/github-actions-demo/actions?query=workflow%3Adocker-example)
-* Run workflow
+* Interacting with resources that are not accessible via the Internet is tricky
+* Local development of github actions can be slow
+* New github actions must be merged to `main` branch prior to testing functionality
+
+
+### Anatomy of a Github Action
+
+1. Event Trigger - an action which kicks off a github action workflow
+2. Job - a robot which performs a series of steps
+3. Steps - Individual tasks created by you or the github action community
