@@ -1,0 +1,43 @@
+name: react-release
+
+
+on:
+  release:
+    types: [published]
+
+env:
+  CI: true
+
+defaults:
+  run:
+    working-directory: react/tacos
+
+jobs:
+  react-test:
+    name: react-test
+    runs-on: ubuntu-20.04
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - uses: actions/setup-node@v2
+      with:
+        node-version: '15'
+
+    - name: Install Dependencies
+      run: yarn install
+
+    - name: Building
+      run: yarn build  
+
+    - name: Linting
+      run: yarn lint  
+
+    - name: Testing
+      run: yarn test
+
+    - name: Install Surge
+      run: yarn global add surge
+  
+
+
