@@ -27,17 +27,20 @@ jobs:
     - name: Install Dependencies
       run: yarn install
 
-    - name: Building
-      run: yarn build  
+    # - name: Update Tacos version
+    #   run: sed -i 's/Version:.*/Version v1.1.1/g' src/app.js
 
-    - name: Linting
-      run: yarn lint  
+    - name: Building Tacos
+      run: yarn build
 
-    - name: Testing
+    - name: Linting Tacos
+      run: yarn lint
+
+    - name: Testing Tacos
       run: yarn test
 
-    - name: Install Surge
+    - name: Install Surge Deployment Tool
       run: yarn global add surge
-  
 
-
+    - name: Deploy Tacos to Surge.sh
+        run: surge ./build tacos.surge.sh --token ${{secrets.SURGE_TOKEN}}
