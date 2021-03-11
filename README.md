@@ -1,15 +1,15 @@
 # github-actions-demo
 
-
+![wall-e](docs/static/wall-e.jpeg)
 ### What are Github Actions?
 
 * little automation robots
 
 ### Why you should care about Github Actions
 
-* They automate boring stuff
-* They can help tighten the feedback loop to expose problems earlier in the development lifecycle
-* The learning curve much lower compared to tools like Jenkins
+* They automate testing, linting, and other processes
+* They can expose problems earlier in the development lifecycle
+* The learning curve much lower than tools like Jenkins
 
 
 ### Examples of Github Actions
@@ -29,5 +29,6 @@
 ### Anatomy of a Github Action
 
 1. Event Trigger - an action which kicks off a github action workflow
-2. Job - a robot which performs a series of steps
-3. Steps - Individual tasks created by you or the github action community
+2. Runner - a robot's operating system
+3. Job - a list of instructions for the robot
+4. Steps - Individual tasks created by you or the github action community
