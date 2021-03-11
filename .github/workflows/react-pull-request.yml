@@ -1,9 +1,9 @@
 name: react-pull-request
 
-#description: test for s3 module
 
 on:
   pull_request:
+    branches: [ main ]
     paths:
     - 'react/tacos/**'
 
@@ -15,8 +15,8 @@ defaults:
     working-directory: react/tacos
 
 jobs:
-  test:
-    name: test
+  react-test:
+    name: react-test
     runs-on: ubuntu-20.04
     strategy:
       matrix:
@@ -29,5 +29,11 @@ jobs:
       with:
         node-version: ${{ matrix.node }}
 
-    - name: Yarn Test
-      run: yarn test
+    - name: Install Dependencies
+      run: yarn install
+
+    - name: Linting
+      run: yarn lint  
+
+    - name: Testing
+      run: yarn test  
