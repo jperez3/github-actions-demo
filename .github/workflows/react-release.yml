@@ -40,4 +40,4 @@ jobs:
       run: yarn test
 
     - name: Deploy Tacos to Surge.sh
-      run: surge ./build tacos.surge.sh --token ${{secrets.SURGE_TOKEN}}
+      run: ./node_modules/.bin/surge ./build tacos.surge.sh --token ${{secrets.SURGE_TOKEN}}
