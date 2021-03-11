@@ -25,9 +25,7 @@ jobs:
         node-version: '15'
 
     - name: Install Dependencies
-      run: |
-        yarn install
-        yarn global add surge
+      run: yarn install
 
     # - name: Update Tacos version
     #   run: sed -i 's/Version:.*/Version v1.1.1/g' src/app.js
