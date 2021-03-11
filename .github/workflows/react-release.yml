@@ -13,8 +13,7 @@ defaults:
     working-directory: react/tacos
 
 jobs:
-  react-release:
-    name: react-release
+  deploy:
     runs-on: ubuntu-20.04
     steps:
     - name: Checkout
