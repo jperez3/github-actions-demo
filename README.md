@@ -21,7 +21,7 @@
 
 ### Github Actions Cons
 
-* Interacting with resources that are not accessible via the Internet is tricky
+* Interacting with resources that are not accessible via the Internet is more involved
 * Local development of github actions can be slow
 * New github actions must be merged to `main` branch prior to testing functionality
 
