@@ -2,9 +2,8 @@ name: react-pull-request
 
 
 on:
-  push:
-  # pull_request:
-    # branches: [ main ]
+  pull_request:
+    branches: [ main ]
     paths:
     - 'react/tacos/**'
 
@@ -16,8 +15,8 @@ defaults:
     working-directory: react/tacos
 
 jobs:
-  test:
-    name: test
+  react-test:
+    name: react-test
     runs-on: ubuntu-20.04
     strategy:
       matrix:
