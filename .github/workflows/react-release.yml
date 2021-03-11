@@ -26,8 +26,8 @@ jobs:
 
     - name: Install Dependencies
       run: |
-      yarn install
-      yarn global add surge
+        yarn install
+        yarn global add surge
 
     # - name: Update Tacos version
     #   run: sed -i 's/Version:.*/Version v1.1.1/g' src/app.js
